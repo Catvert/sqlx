@@ -32,6 +32,10 @@ pub use sqlx_core::mysql::{self, MySql, MySqlConnection, MySqlPool};
 #[cfg_attr(docsrs, doc(cfg(feature = "postgres")))]
 pub use sqlx_core::postgres::{self, PgConnection, PgPool, Postgres};
 
+#[cfg(feature = "mssql")]
+#[cfg_attr(docsrs, doc(cfg(feature = "mssql")))]
+pub use sqlx_core::mssql::{self, MsSql, MsSqlConnection};
+
 #[cfg(feature = "macros")]
 #[doc(hidden)]
 pub extern crate sqlx_macros;

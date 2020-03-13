@@ -48,6 +48,10 @@ pub mod mysql;
 #[cfg_attr(docsrs, doc(cfg(feature = "postgres")))]
 pub mod postgres;
 
+#[cfg(feature = "mssql")]
+#[cfg_attr(docsrs, doc(cfg(feature = "mssql")))]
+pub mod mssql;
+
 pub use error::{Error, Result};
 
 // Named Lifetimes:
