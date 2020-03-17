@@ -8,7 +8,7 @@ use futures_core::future::BoxFuture;
 use futures_util::future;
 use libsqlite3_sys::{
     sqlite3, sqlite3_close, sqlite3_extended_result_codes, sqlite3_open_v2, SQLITE_OK,
-    SQLITE_OPEN_CREATE, SQLITE_OPEN_NOMUTEX, SQLITE_OPEN_READWRITE, SQLITE_OPEN_SHAREDCACHE,
+    SQLITE_OPEN_CREATE, SQLITE_OPEN_NOMUTEX, SQLITE_OPEN_READWRITE
 };
 
 use crate::connection::{Connect, Connection};
@@ -66,8 +66,7 @@ async fn establish(url: crate::Result<Url>) -> crate::Result<SqliteConnection> {
             // cannot satisfy our wish for a thread-safe, lock-free connection object
             let flags = SQLITE_OPEN_READWRITE
                 | SQLITE_OPEN_CREATE
-                | SQLITE_OPEN_NOMUTEX
-                | SQLITE_OPEN_SHAREDCACHE;
+                | SQLITE_OPEN_NOMUTEX;
 
             // <https://www.sqlite.org/c3ref/open.html>
             #[allow(unsafe_code)]
